@@ -1,0 +1,21 @@
+# version: "3.8"
+
+services:
+  ros2_gazebo_fortress:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: ros2_humble_gazebo_fortress:latest
+    tty: true
+    stdin_open: true
+    container_name: ros2_gazebo_fortress
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: host
+    # command: /bin/bash
+
+
